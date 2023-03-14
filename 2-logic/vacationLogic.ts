@@ -19,16 +19,16 @@ export async function getAllVacations(userId: number, offset: number, likes: str
         return results;
 
     } else if (active === 'true') {
-        const query = `SELECT id ,destination, description, DATE_FORMAT(startingDate, "%Y-%m-%d") AS startingDate, DATE_FORMAT(endingDate, "%Y-%m-%d") AS endingDate, price, imageName, (select vl.userId from likes vl where vl.userId = ${userId} and vl.vacationId = v.id) as userLikes, (select count(*) from likes vl where vl.vacationId = v.id) as totalLikes from vacations.vacations v where startingDate < now() AND endingDate > now() ORDER BY startingDate LIMIT 10 OFFSET ${offset}`
+        const query = `SELECT id ,destination, description, DATE_FORMAT(startingDate, "%Y-%m-%d") AS startingDate, DATE_FORMAT(endingDate, "%Y-%m-%d") AS endingDate, price, imageName, (select vl.userId from likes vl where vl.userId = ${userId} and vl.vacationId = v.id) as userLikes, (select count(*) from likes vl where vl.vacationId = v.id) as totalLikes from xd97oik72sweoall.vacations v where startingDate < now() AND endingDate > now() ORDER BY startingDate LIMIT 10 OFFSET ${offset}`
         const [results] = await execute(query);
         return results;
 
     } else if (coming === 'true') {
-        const query = `SELECT id ,destination, description, DATE_FORMAT(startingDate, "%Y-%m-%d") AS startingDate, DATE_FORMAT(endingDate, "%Y-%m-%d") AS endingDate, price, imageName, (select vl.userId from likes vl where vl.userId = ${userId} and vl.vacationId = v.id) as userLikes, (select count(*) from likes vl where vl.vacationId = v.id) as totalLikes from vacations.vacations v  where startingDate > now() ORDER BY startingDate LIMIT 10 OFFSET ${offset}`
+        const query = `SELECT id ,destination, description, DATE_FORMAT(startingDate, "%Y-%m-%d") AS startingDate, DATE_FORMAT(endingDate, "%Y-%m-%d") AS endingDate, price, imageName, (select vl.userId from likes vl where vl.userId = ${userId} and vl.vacationId = v.id) as userLikes, (select count(*) from likes vl where vl.vacationId = v.id) as totalLikes from xd97oik72sweoall.vacations v  where startingDate > now() ORDER BY startingDate LIMIT 10 OFFSET ${offset}`
         const [results] = await execute(query);
         return results;
     }
-    const query = `SELECT id ,destination, description, DATE_FORMAT(startingDate, "%Y-%m-%d") AS startingDate, DATE_FORMAT(endingDate, "%Y-%m-%d") AS endingDate, price, imageName, (select vl.userId from likes vl where vl.userId = ${userId} and vl.vacationId = v.id) as userLikes, (select count(*) from likes vl where vl.vacationId = v.id) as totalLikes from vacations.vacations v ORDER BY startingDate limit 10 offset ${offset}`
+    const query = `SELECT id ,destination, description, DATE_FORMAT(startingDate, "%Y-%m-%d") AS startingDate, DATE_FORMAT(endingDate, "%Y-%m-%d") AS endingDate, price, imageName, (select vl.userId from likes vl where vl.userId = ${userId} and vl.vacationId = v.id) as userLikes, (select count(*) from likes vl where vl.vacationId = v.id) as totalLikes from xd97oik72sweoall.vacations v ORDER BY startingDate limit 10 offset ${offset}`
     const [results] = await execute<OkPacket>(query);
     return results;
 }
