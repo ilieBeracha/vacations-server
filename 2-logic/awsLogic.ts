@@ -5,6 +5,7 @@ dotenv.config()
 export async function saveImagesToS3(file: any, imageId: string) {
     try {
         const type = file.name.split('.')[1];
+        console.log(type);
         const params:any = {
             Body: file.data,
             Key: `${imageId}.${type}`,
