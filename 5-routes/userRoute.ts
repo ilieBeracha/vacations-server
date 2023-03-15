@@ -11,7 +11,7 @@ UserRoute.post('/register', async (req, res) => {
     user.password = hashedPassword(user.password)
     try {
         const response = await register(user)
-        if (response.length > 0) {
+        if (response.length !== 0) {
             res.status(404).json(response)
             return;
         } else {
