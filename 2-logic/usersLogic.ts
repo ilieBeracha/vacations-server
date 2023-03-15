@@ -1,6 +1,5 @@
 import { OkPacket } from "mysql2";
 import { execute } from "../1-dal/dalSql";
-import { hashedPassword } from "../1-dal/hashedPssword";
 import { UserInterface } from "../4-models/UserModel";
 
 export async function getAllUsers() {

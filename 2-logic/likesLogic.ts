@@ -17,7 +17,7 @@ export async function likeOrUnlikeVacation(userId: number, vacationId: number) {
 }
 
 export async function getAllLikesForGraph(){
-    const query = 'SELECT vacations.destination, COUNT(likes.vacationId) as likes FROM vacations LEFT JOIN likes ON vacations.id = likes.vacationId GROUP BY vacations.destination'
+    const query = 'SELECT vacation.destination, COUNT(likes.vacationId) as likes FROM vacation LEFT JOIN likes ON vacation.id = likes.vacationId GROUP BY vacation.destination'
     const [results] = await execute(query);
     return results;
 }
