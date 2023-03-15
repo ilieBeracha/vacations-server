@@ -11,10 +11,15 @@ UserRoute.post('/register', async (req, res) => {
     user.password = hashedPassword(user.password)
     try {
         const response = await register(user)
-        if (response.length !== 0) {
+        console.log(response);
+        if (response.length > 0) {
+            console.log('have');
+            
             res.status(404).json(response)
             return;
         } else {
+            console.log('registered');
+            
             const token = await generateToken(user)
             res.status(200).json(token)
         }
